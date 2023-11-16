@@ -51,37 +51,18 @@ public class MyPlayerController : MonoBehaviour
         if (sprintAction.triggered)
         {
             sprint = !sprint;
-            Debug.Log("Sprint!");
         }
     }
 
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
         moveVector = context.ReadValue<Vector2>();
-        Debug.Log("moving " + moveVector.x + " " + moveVector.y);
     }
 
     private void OnMoveCanceled(InputAction.CallbackContext context)
     {
         moveVector = Vector2.zero;
         sprint = false;
-    }
-
-    //public void JumpInput(bool newJumpState)
-    //{
-    //    jump = newJumpState;
-    //}
-
-    private void OnJump(InputAction.CallbackContext context)
-    {
-        // this is the "jump" action callback method
-       // jump = context.ReadValue<bool>();
-        Debug.Log("Jump!");
-       // Debug.Log(jump);
-    }
-    private void OnSprint(InputAction.CallbackContext context)
-    {
-        Debug.Log("Sprint!");
     }
 
     void OnEnable()
