@@ -103,7 +103,7 @@ namespace StarterAssets
 #endif
 
         
-        private MyPlayerController _input;       
+        private PlayerInputs _input;       
         private Animator _animator;
         private CharacterController _controller;
         private GameObject _mainCamera;
@@ -140,7 +140,7 @@ namespace StarterAssets
             
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
-            _input = GetComponent<MyPlayerController>();
+            _input = GetComponent<PlayerInputs>();
 
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();

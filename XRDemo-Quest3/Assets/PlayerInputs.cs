@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MyPlayerController : MonoBehaviour
+public class PlayerInputs : MonoBehaviour
 {
     // assign the actions asset to this field in the inspector:
     public InputActionAsset actions;
