@@ -1,4 +1,5 @@
 using StarterAssets;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,11 +19,15 @@ public class MyPlayerController : MonoBehaviour
     {
         // find the "move" action, and keep the reference to it, for use in Update
         actions.FindActionMap("Player").FindAction("Move").performed += OnMovePerformed;
-        
+
+        actions.FindActionMap("Player").FindAction("Move").canceled += OnMoveCanceled;
+
 
         // for the "jump" action, we add a callback method for when it is performed
         actions.FindActionMap("Player").FindAction("Jump").performed += OnJump;
     }
+
+
 
     void Update()
     {
@@ -34,6 +39,11 @@ public class MyPlayerController : MonoBehaviour
     {
         moveVector = context.ReadValue<Vector2>();
         Debug.Log("moving " + moveVector.x + " " + moveVector.y);
+    }
+
+    private void OnMoveCanceled(InputAction.CallbackContext context)
+    {
+        moveVector = Vector2.zero;
     }
 
     public void JumpInput(bool newJumpState)
