@@ -34,9 +34,9 @@
                 },
                 {
                     "name": "Sprint",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "980e881e-182c-404c-8cbf-3d09fdb48fef",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -237,6 +237,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69d51d7f-4148-4749-a30e-5cbf2ce956fd",
+                    "path": "<OculusTouchController>{LeftHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false

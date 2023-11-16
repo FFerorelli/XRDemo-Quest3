@@ -9,10 +9,12 @@ public class MyPlayerController : MonoBehaviour
     public InputActionAsset actions;
 
     // private field to store move action reference
-    private InputAction moveAction;
+    private InputAction sprintAction;
+    private InputAction jumpAction;
     public Vector2 moveVector;
     public bool jump;
-    // public ThirdPersonController thirdPersonController;
+    public bool sprint;
+
 
 
     void Awake()
@@ -24,15 +26,33 @@ public class MyPlayerController : MonoBehaviour
 
 
         // for the "jump" action, we add a callback method for when it is performed
-        actions.FindActionMap("Player").FindAction("Jump").performed += OnJump;
+        jumpAction = actions.FindActionMap("Player").FindAction("Jump");
+
+        sprintAction = actions.FindActionMap("Player").FindAction("Sprint");
     }
 
 
 
     void Update()
     {
-        // our update loop polls the "move" action value each frame
-       // OnMovePerformed();
+        JumpInput();
+        SprintInput();
+    }
+
+    private void JumpInput()
+    {
+        if (jumpAction.triggered)
+        {
+            jump = true;
+        }
+    }
+    private void SprintInput()
+    {
+        if (sprintAction.triggered)
+        {
+            sprint = !sprint;
+            Debug.Log("Sprint!");
+        }
     }
 
     private void OnMovePerformed(InputAction.CallbackContext context)
@@ -44,12 +64,13 @@ public class MyPlayerController : MonoBehaviour
     private void OnMoveCanceled(InputAction.CallbackContext context)
     {
         moveVector = Vector2.zero;
+        sprint = false;
     }
 
-    public void JumpInput(bool newJumpState)
-    {
-        jump = newJumpState;
-    }
+    //public void JumpInput(bool newJumpState)
+    //{
+    //    jump = newJumpState;
+    //}
 
     private void OnJump(InputAction.CallbackContext context)
     {
@@ -57,6 +78,10 @@ public class MyPlayerController : MonoBehaviour
        // jump = context.ReadValue<bool>();
         Debug.Log("Jump!");
        // Debug.Log(jump);
+    }
+    private void OnSprint(InputAction.CallbackContext context)
+    {
+        Debug.Log("Sprint!");
     }
 
     void OnEnable()
